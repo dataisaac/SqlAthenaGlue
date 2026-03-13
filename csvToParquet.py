@@ -9,9 +9,9 @@ def process_csv(csv_file: str, output_dir: str, bucket_name: str, s3_key: str) -
 
     s3 = boto3.client(
         's3',
-        aws_access_key_id = 'AKIAQMPUDRMOEUHZRAGJ',
-        aws_secret_access_key = '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',    
-        region_name = 'sa-east-1'
+        aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
+        aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY'),
+        region_name=os.environ.get('AWS_REGION', 'sa-east-1')
     )
 
     df = pd.read_csv(csv_file)
